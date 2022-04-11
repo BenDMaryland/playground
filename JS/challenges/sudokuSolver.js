@@ -25,19 +25,22 @@ let column=[]
 function sudokuChecker(soduku){
 let f=0
 
-for (let i = 0; i!= 8; i++){
+for (let i = 0; i!= 9; i++){
 
 
-for (let e = 0; e!= 8; e++){
+for (let e = 0; e!= 9; e++){
 soduku[i][e] != "." ? row = [...row, soduku[i][e]] : null 
-column = [...column, soduku[i][e]]
+soduku[e][i] != "." ? column = [...column, soduku[e][i]] : null 
+
+if(e===8){
+ console.log( "Column is ",hasDuplicates(column))
+ column=[]}
+ 
+
 }
 
-//console.log(hasDuplicates(row))
-console.log(column)
+console.log("row is ", hasDuplicates(row))
 row = []
-
-
 }
 
 function hasDuplicates(array) {
