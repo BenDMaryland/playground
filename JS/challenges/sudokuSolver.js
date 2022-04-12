@@ -38,7 +38,7 @@ let setEight = [];
 let setNine = [];
 
 function sudokuChecker(soduku) {
-  let f = 0;
+  let finalResult = true;
 
   for (let i = 0; i != 9; i++) {
     for (let e = 0; e != 9; e++) {
@@ -46,7 +46,8 @@ function sudokuChecker(soduku) {
       soduku[e][i] != "." ? (column = [...column, soduku[e][i]]) : null;
 
       if (e === 8) {
-        console.log("Column is ", hasDuplicates(column));
+     //   console.log("Column is ", hasDuplicates(column));
+        hasDuplicates(column) ? null : (finalResult = false);
         column = [];
       }
 
@@ -60,7 +61,7 @@ function sudokuChecker(soduku) {
         }
       }
       if (i < 6 && i > 2) {
-        if (e < 3 ) {
+        if (e < 3) {
           soduku[i][e] != "." ? (setFour = [...setFour, soduku[i][e]]) : null;
         } else if (e < 6) {
           soduku[i][e] != "." ? (setFive = [...setFive, soduku[i][e]]) : null;
@@ -84,12 +85,9 @@ function sudokuChecker(soduku) {
     console.log("set two is ", hasDuplicates(setTwo));
     console.log("set thee is ", hasDuplicates(setThree));
 
-    console.log("set four ",setOne)
     console.log("set four is ", hasDuplicates(setFour));
     console.log("set five is ", hasDuplicates(setFive));
     console.log("set six is ", hasDuplicates(setSix));
-
-    //console.log("set six ", setEight);
 
     console.log("set seven is ", hasDuplicates(setSeven));
     console.log("set eight is ", hasDuplicates(setEight));
@@ -97,11 +95,27 @@ function sudokuChecker(soduku) {
 
     row = [];
 
+    hasDuplicates(row) ? null : (finalResult = false);
+
+    hasDuplicates(setOne) ? null : (finalResult = false);
+    hasDuplicates(setTwo) ? null : (finalResult = false);
+    hasDuplicates(setThree) ? null : (finalResult = false);
+
+    hasDuplicates(setFour) ? null : (finalResult = false);
+    hasDuplicates(setFive) ? null : (finalResult = false);
+    hasDuplicates(setSix) ? null : (finalResult = false);
+
+      hasDuplicates(setSeven) ? null : (finalResult = false);
+      hasDuplicates(setEight) ? null : (finalResult = false);
+      hasDuplicates(setNine) ? null : (finalResult = false);
   }
 
   function hasDuplicates(array) {
     return new Set(array).size !== array.length;
   }
+
+  console.log(finalResult)
 }
 
 sudokuChecker(bad);
+sudokuChecker(good);
