@@ -22,6 +22,34 @@ let bad = [
   [".", ".", ".", ".", "8", ".", ".", "7", "9"],
 ];
 
+let alsobad = [
+  ["7", ".", ".", ".", "4", ".", ".", ".", "."],
+  [".", ".", ".", "8", "6", "5", ".", ".", "."],
+  [".", "1", ".", "2", ".", ".", ".", ".", "."],
+  [".", ".", ".", ".", ".", "9", ".", ".", "."],
+  [".", ".", ".", ".", "5", ".", "5", ".", "."],
+  [".", ".", ".", ".", ".", ".", ".", ".", "."],
+  [".", ".", ".", ".", ".", ".", "2", ".", "."],
+  [".", ".", ".", ".", ".", ".", ".", ".", "."],
+  [".", ".", ".", ".", ".", ".", ".", ".", "."],
+];
+
+let anotherbad = [
+  [".", ".", ".", ".", ".", ".", "5", ".", "."],
+  [".", ".", ".", ".", ".", ".", ".", ".", "."],
+  [".", ".", ".", ".", ".", ".", ".", ".", "."],
+  ["9", "3", ".", ".", "2", ".", "4", ".", "."],
+  [".", ".", "7", ".", ".", ".", "3", ".", "."],
+  [".", ".", ".", ".", ".", ".", ".", ".", "."],
+  [".", ".", ".", "3", "4", ".", ".", ".", "."],
+  [".", ".", ".", ".", ".", "3", ".", ".", "."],
+  [".", ".", ".", ".", ".", "5", "2", ".", "."],
+];
+
+
+
+function sudokuChecker(soduku) {
+
 let row = [];
 let column = [];
 
@@ -37,17 +65,19 @@ let setSeven = [];
 let setEight = [];
 let setNine = [];
 
-function sudokuChecker(soduku) {
+
   let finalResult = true;
 
   for (let i = 0; i != 9; i++) {
+    
     for (let e = 0; e != 9; e++) {
+   
       soduku[i][e] != "." ? (row = [...row, soduku[i][e]]) : null;
       soduku[e][i] != "." ? (column = [...column, soduku[e][i]]) : null;
 
       if (e === 8) {
-     //   console.log("Column is ", hasDuplicates(column));
-        hasDuplicates(column) ? null : (finalResult = false);
+     //  console.log("Column is ", hasDuplicates(column), column, i);
+      hasDuplicates(column) ? (finalResult = false) : null; 
         column = [];
       }
 
@@ -68,7 +98,7 @@ function sudokuChecker(soduku) {
         } else {
           soduku[i][e] != "." ? (setSix = [...setSix, soduku[i][e]]) : null;
         }
-      } else if (i > 6) {
+      } else if (i > 5) {
         if (e < 3) {
           soduku[i][e] != "." ? (setSeven = [...setSeven, soduku[i][e]]) : null;
         } else if (e < 6 && e > 2) {
@@ -79,43 +109,34 @@ function sudokuChecker(soduku) {
       }
     }
 
-    console.log("row is ", hasDuplicates(row));
 
-    console.log("set one is ", hasDuplicates(setOne));
-    console.log("set two is ", hasDuplicates(setTwo));
-    console.log("set thee is ", hasDuplicates(setThree));
 
-    console.log("set four is ", hasDuplicates(setFour));
-    console.log("set five is ", hasDuplicates(setFive));
-    console.log("set six is ", hasDuplicates(setSix));
 
-    console.log("set seven is ", hasDuplicates(setSeven));
-    console.log("set eight is ", hasDuplicates(setEight));
-    console.log("set nine is ", hasDuplicates(setNine));
+    hasDuplicates(row) ?  finalResult = false  : null 
 
-    row = [];
+    hasDuplicates(setOne) ?  finalResult = false : null 
+    hasDuplicates(setTwo) ?  finalResult = false : null 
+    hasDuplicates(setThree) ?  finalResult = false : null 
 
-    hasDuplicates(row) ? null : (finalResult = false);
+    hasDuplicates(setFour) ?  finalResult = false : null 
+    hasDuplicates(setFive) ? (finalResult = false) : null 
+    hasDuplicates(setSix) ?  (finalResult = false) : null 
+  
 
-    hasDuplicates(setOne) ? null : (finalResult = false);
-    hasDuplicates(setTwo) ? null : (finalResult = false);
-    hasDuplicates(setThree) ? null : (finalResult = false);
-
-    hasDuplicates(setFour) ? null : (finalResult = false);
-    hasDuplicates(setFive) ? null : (finalResult = false);
-    hasDuplicates(setSix) ? null : (finalResult = false);
-
-      hasDuplicates(setSeven) ? null : (finalResult = false);
-      hasDuplicates(setEight) ? null : (finalResult = false);
-      hasDuplicates(setNine) ? null : (finalResult = false);
+      hasDuplicates(setSeven) ?  (finalResult = false) : null 
+      hasDuplicates(setEight) ?  (finalResult = false) : null 
+      hasDuplicates(setNine) ? (finalResult = false) : null
+          row = [];
   }
 
   function hasDuplicates(array) {
     return new Set(array).size !== array.length;
   }
 
+
   console.log(finalResult)
+  return finalResult
 }
 
-sudokuChecker(bad);
-sudokuChecker(good);
+sudokuChecker(anotherbad);
+//sudokuChecker(good);
