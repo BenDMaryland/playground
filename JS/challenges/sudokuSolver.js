@@ -35,7 +35,7 @@ let alsobad = [
 ];
 
 let anotherbad = [
-  [".", ".", ".", ".", ".", ".", "5", ".", "."],
+  ["1", "1", ".", ".", ".", ".", "5", ".", "."],
   [".", ".", ".", ".", ".", ".", ".", ".", "."],
   [".", ".", ".", ".", ".", ".", ".", ".", "."],
   ["9", "3", ".", ".", "2", ".", "4", ".", "."],
@@ -46,7 +46,7 @@ let anotherbad = [
   [".", ".", ".", ".", ".", "5", "2", ".", "."],
 ];
 
-
+let array2 =["2","3"]
 
 function sudokuChecker(soduku) {
 
@@ -137,6 +137,11 @@ let setNine = [];
   console.log(finalResult)
   return finalResult
 }
+  function hasDuplicates(array) {
+    return new Set(array).size !== array.length;
+  }
 
-sudokuChecker(anotherbad);
+//sudokuChecker(anotherbad);
 //sudokuChecker(good);
+console.log(hasDuplicates(array2))
+console.log([1,2,3].find(number=> number == 9))
