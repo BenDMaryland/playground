@@ -3,7 +3,7 @@ const arry = ["Saab", "Volvo", "BMddddddW"]
 
 function longestStringFinder(array){
 let ar= array.sort((a, b) => b.length - a.length)
-console.log(ar[0])
+console.log("The solution is ",ar[0])
 }
 
 longestStringFinder(arry)
